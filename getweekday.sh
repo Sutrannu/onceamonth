@@ -15,10 +15,12 @@ else
     # get the weekdays in the month
     weekdays=()
     for d in {1..31}; do
-        if date -d "$MONTH/$d/$year" +%d >/dev/null 2>/dev/null; then
-            if [ $(date -d "$MONTH/$d/$year" +%u) -lt 6 ]; then
-                weekdays+=($(date -d "$MONTH/$d/$year" +%-d))
+    	if u=$(date -d "$MONTH/$d/$year" +%u 2>/dev/null); then
+            if [ $u -lt 6 ]; then
+                weekdays+=($d)
             fi
+ 		else
+ 			continue
         fi
     done
     numweekdays=${#weekdays[@]}
