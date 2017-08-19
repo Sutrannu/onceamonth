@@ -1,0 +1,7 @@
+[package]
+name = "getweekday-rs"
+version = "0.1.0"
+authors = ["Dan Mack <mack@macktronics.com>"]
+
+[dependencies]
+chrono = "0.4"
