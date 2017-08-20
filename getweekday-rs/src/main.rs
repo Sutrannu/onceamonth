@@ -51,12 +51,13 @@ fn main() {
             // intrinsics, away from zero, so we must roll our own
 
             let frac = q - q.trunc();
-            let index:usize;
-            if (frac == 0.5) && (q.trunc() as u32 % 2 == 0) {
-                index = q.trunc() as usize;
-            } else {
-                index = q.round() as usize;
-            }
+            let index:usize =
+                if (frac == 0.5) && (q.trunc() as u32 % 2 == 0) {
+                    q.trunc() as usize
+                } else {
+                    q.round() as usize
+                };
+
             println!("{}", wds[index].format("%a %Y-%m-%d").to_string());
         },
         _ => {
